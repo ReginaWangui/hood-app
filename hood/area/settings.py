@@ -72,7 +72,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_admin_bootstrapped',
     'django_registration',
-    'registration',
     
 
 
