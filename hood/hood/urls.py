@@ -1,21 +1,26 @@
-"""hood URL Configuration
+from django.conf.urls import url,include
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path
+urlpatterns=[
+    url(r'^$',views.index,name='Index'),
+    url(r'^notifications',views.notification, name='notifications'),
+    url(r'^blog',views.blog, name='blog'),
+    url(r'^health',views.health, name='health'),
+    url(r'^authorities',views.authorities, name='authorities'),
+    url(r'^businesses',views.businesses, name='businesses'),
+    url(r'^view/blog/(\d+)',views.view_blog,name='view_blog'),
+    url(r'^my-profile/',views.my_profile, name='my-profile'),
+    url(r'^user/(?P<username>\w{0,50})',views.user_profile,name='user-profile'),
+    url(r'^new/blogpost$',views.new_blogpost, name='new-blogpost'),
+    url(r'^new/business$',views.new_business, name='new-business'),
+    url(r'^create/profile$',views.create_profile, name='create-profile'),
+    url(r'^new/notification$',views.new_notification, name='new-notification'),
+    url(r'^update/profile$',views.update_profile, name='update-profile'),
+    url(r'^search/',views.search_results, name='search_results'),
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
