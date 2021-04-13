@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -73,6 +76,7 @@ INSTALLED_APPS = [
     'django_admin_bootstrapped',
     'django_registration',
     'crispy_forms',
+    'cloudinary'
     
 ]
 CRISPY_TEMPLATE_PACK = 'uni_form'
@@ -109,6 +113,17 @@ TEMPLATES = [
         },
     },
 ]
+
+UPLOADCARE = {
+    'pub_key': 'ef2a4dc742a424862dd6',
+	'secret':SECRET_KEY,
+}
+
+cloudinary.config( 
+  cloud_name = "python-django-project", 
+  api_key = "588194731977868", 
+  api_secret = "AhvuhCJf_xygop8UE12cJVkihPs" 
+)
 
 WSGI_APPLICATION = 'area.wsgi.application'
 

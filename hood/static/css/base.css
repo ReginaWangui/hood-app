@@ -1,6 +1,6 @@
 body{
   background-color: MintCream;
-  /* background-image: url(../img/background.jpg); */
-  /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/wood.jpg) fixed; */
-  /* background-position: -500% 10%; */
+  background-image: url(../imedia/businesslogo/screen11.jpg);
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(/media/businesslogo/screen11.jpg) fixed;
+  background-position: -500% 10%;
 }
