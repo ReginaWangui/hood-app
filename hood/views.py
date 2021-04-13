@@ -39,7 +39,7 @@ def notification(request):
     current_user=request.user
     profile=Profile.objects.all()
     all_notifications = notifications.objects.filter()
-
+           
     return render(request,'pages/notifications_form.html',{"notifications":all_notifications})
 
     # return render(request,'pages/notifications.html')
