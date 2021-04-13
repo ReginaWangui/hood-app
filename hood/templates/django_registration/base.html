@@ -1,0 +1,34 @@
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    
+    {% block styles %}
+    {% bootstrap_css %}
+    <!-- <link rel="stylesheet" href="{% static 'css/navbar.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/base2.css' %}">
+    {% endblock %}
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+
+
+  </head>
+  <body style="background-image: none !important;">
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block scripts %}
+
+    {% bootstrap_javascript %}
+
+    {% endblock scripts %}
+
+
+
+  </body>
+</html>
