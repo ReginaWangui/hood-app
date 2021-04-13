@@ -38,9 +38,10 @@ def index(request):
 def notification(request):
     current_user=request.user
     profile=Profile.objects.all()
-    all_notifications = notifications.objects.filter(neighbourhood=profile.neighbourhood)
+    all_notifications = notifications.objects.filter()
 
-    return render(request,'pages/notifications.html',{"notifications":all_notifications})
+    return render(request,'pages/notifications_form.html',{"notifications":all_notifications})
+
     # return render(request,'pages/notifications.html')
 
 
@@ -48,8 +49,8 @@ def notification(request):
 @login_required(login_url='/accounts/login/')
 def blog(request):
     current_user=request.user
-    profile=Profile.objects.get(username=current_user)
-    blogposts = BlogPost.objects.filter(neighbourhood=profile.neighbourhood)
+    profile=Profile.objects.all()
+    blogposts = BlogPost.objects.filter()
 
     # return render(request,'pages/blog.html')
 
@@ -58,8 +59,8 @@ def blog(request):
 @login_required(login_url='/accounts/login/')
 def health(request):
     current_user=request.user
-    profile=Profile.objects.get(username=current_user)
-    healthservices = Health.objects.filter(neighbourhood=profile.neighbourhood)
+    profile=Profile.objects.all()
+    healthservices = Health.objects.filter()
 
     # return render(request,'pages/health.html')
 
@@ -69,7 +70,7 @@ def health(request):
 def authorities(request):
     current_user=request.user
     profile=Profile.objects.all()
-    authorities = Authorities.objects.filter(neighbourhood=profile.neighbourhood)
+    authorities = Authorities.objects.filter()
     # return render(request,'pages/authorities.html')
 
     return render(request,'pages/authorities.html',{"authorities":authorities})
@@ -110,10 +111,10 @@ def view_blog(request,id):
 @login_required(login_url='/accounts/login/')
 def my_profile(request):
     current_user=request.user
-    profile =Profile.objects.get()
+    profile=Profile.objects.all()
     # return render(request,'pages/user_profile.html')
 
-    return render(request,'pages/user-profile.html',{"profile":profile})
+    return render(request,'pages/user_profile.html',{"profile":profile})
 
 
 @login_required(login_url='/accounts/login/')
@@ -123,7 +124,7 @@ def user_profile(request,username):
     
     # return render(request,'pages/user_profile.html')
 
-    return render(request,'pages/user-profile.html',{"profile":profile})
+    return render(request,'pages/user_profile.html',{"profile":profile})
 
 @login_required(login_url='/accounts/login/')
 def new_blogpost(request):
@@ -146,7 +147,7 @@ def new_blogpost(request):
 
     # return render(request,'pages/blogpost_form.html')
 
-    return render(request,'pages/blogpost-form.html',{"form":form})
+    return render(request,'pages/blogpost_form.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def new_business(request):
@@ -168,7 +169,7 @@ def new_business(request):
 
     # return render(request,'pages/businesses_form.html')
 
-    return render(request,'pages/business-form.html',{"form":form})
+    return render(request,'pages/business_form.html',{"form":form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -213,7 +214,7 @@ def new_notification(request):
 
     # return render(request,'pages/new/notification_form.html')
 
-    return render(request,'pages/notifications-form.html',{"form":form})
+    return render(request,'pages/notifications_form.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def update_profile(request):
@@ -227,11 +228,11 @@ def update_profile(request):
             profile.username = current_user
             profile.save()
 
-        return HttpResponseRedirect('/home')
+        return HttpResponseRedirect('/update')
 
     elif Profile.objects.all():
         profile = Profile.objects.all()
-        form = ProfileForm(instance=profile)
+        form = ProfileForm()
     else:
         form = ProfileForm()
 
