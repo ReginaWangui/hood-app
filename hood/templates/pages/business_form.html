@@ -24,10 +24,10 @@
         <div class="panel-body">
 
           <div class="text-center">
+      {% csrf_token %}
+      {% load crispy_forms_tags %}
+            
           <form action="{% url 'new-business' %}" method="post" enctype="multipart/form-data">
-
-            {% csrf_token %}
-            {% bootstrap_form form %}
 
             <div class="form-group">
               <input type="submit" class="btn btn-primary login-button" value="Post">
